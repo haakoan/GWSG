@@ -16,6 +16,9 @@ The Signal class represents a gravitational wave signal generated from a set of 
 - `signal`: numpy.array
   - The gravitational wave signal sampled at the times in the `time` array.
 
+- `modes_signal`: numpy.array
+  - The gravitational wave signal sampled at the times in the `time` array, for each individual mode.
+
 - `modes`: dict
   - A dictionary listing the modes of the signal.
 
@@ -39,10 +42,21 @@ The Signal class represents a gravitational wave signal generated from a set of 
 
 ### `generate_signal()`
 
-This function generates the gravitational wave signal based on the input provided by the user when the Signal was initiated. The user does not need to provide any input since this has already been provided when initializing the Signal instance.
+This function generates the gravitational wave signal based on the input provided by the user when the Signal was initiated. The user does not need to
+provide any input since this has already been provided when initializing the Signal instance. For each mode in the signal, generate_mode() is called and a
+mode weight is applied. The total signal is then constructed by summing up all the realizations of the modes and adding noise.
 
 - Arguments: None
 - Returns: None
+
+While this function does not return anything, it modifies the Signal instance and sets `Signal.signal` and `Signal.modes_signal`
+
+After the user has initialized a signal instance, the signal is generated as follows:
+```python
+signal.generate_signal()
+```
+
+
 
 ### `__init__(self, time, modes, mode_kwargs={}, mode_weight = {}, polarisation=False, signal_weight = None, rng_seed = -1, noise_level=1.0)`
 
