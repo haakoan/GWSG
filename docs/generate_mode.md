@@ -3,7 +3,35 @@ layout: page
 title:  generate_mode
 description: Documentation for the main signal generation aspect of the code
 ---
-## `generate_mode`
+
+`generate_mode` is a function that generates a gravitational wave mode based on the user-specified parameters. It first generates random white noise in the frequency domain and calculates the power spectral density `s1` using the provided `psd` function and input parameters. It then shapes the noise by the power spectral density and generates a pulse based on the specified polarization.
+
+The math behind the function can be described as follows:
+
+1. Generate random white noise `h1_white` in the frequency domain and calculate the frequency array `f`:
+   h1_white = FFT(rng_generator.standard_normal(N))
+   f = fftfreq(N, d=dt)[:N]
+
+2. Calculate the power spectral density `s1` using the provided `psd` function and input parameters:
+   s1 = psd(f, central_frequency, **psd_kwargs)
+
+3. Normalize the power spectral density `s1`:
+   s1 = s1 / sqrt(mean(s1^2))
+
+4. Shape the noise by the power spectral density:
+   h1_shaped = h1_white * s1
+
+5. Generate a pulse based on the specified polarization:
+   - If the polarization is 'unpolarised', generate another set of random white noise `h2_white`, shape it by the power spectral density `s1`, and perform an inverse Fourier transform on both `h1_shaped` and `h2_shaped` to obtain the time-domain waveforms `h_t1` and `h_t2`.
+   - If the polarization is 'linear', generate a time-domain waveform `h_t1` using the inverse Fourier transform of `h1_shaped`, and set `h_t2` to be an array of zeros with the same length as `h_t1`.
+   - If the polarization is 'elliptical', generate another set of random white noise `h2_white`, shape it by the power spectral density `s1` and the polarization value `polarisation_value`, and perform an inverse Fourier transform on both `h1_shaped` and `h2_shaped` to obtain the time-domain waveforms `h_t1` and `h_t2`.
+   - For any other polarization, return two arrays of zeros with the same length as the input time array.
+
+The output of the function is a tuple containing the time-domain waveforms `h_t1` and `h_t2`, which can be used to create the final gravitational wave signal.
+
+
+
+
 
 This function generates a single mode of a gravitational wave signal. It takes a user-defined function or a predefined function from the modes sub-library, computes the mode, and returns it.
 
