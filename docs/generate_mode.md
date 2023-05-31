@@ -4,7 +4,10 @@ title:  generate_mode
 description: Documentation for the main signal generation aspect of the code
 ---
 
-`generate_mode` is a function that generates a gravitational wave mode based on the user-specified parameters. It first generates random white noise in the frequency domain and calculates the power spectral density `s1` using the provided `psd` function and input parameters. It then shapes the noise by the power spectral density and generates a pulse based on the specified polarization.
+`generate_mode` is a function that generates a gravitational wave mode based on the user-specified parameters. 
+It first generates random white noise in the frequency 
+domain and calculates the power spectral density `s1` using the provided `psd` function and input parameters. 
+It then shapes the noise by the power spectral density and generates a pulse based on the specified polarization.
 
 The math behind the function can be described as follows:
 
@@ -27,41 +30,48 @@ The math behind the function can be described as follows:
    - If the polarization is 'elliptical', generate another set of random white noise `h2_white`, shape it by the power spectral density `s1` and the polarization value `polarisation_value`, and perform an inverse Fourier transform on both `h1_shaped` and `h2_shaped` to obtain the time-domain waveforms `h_t1` and `h_t2`.
    - For any other polarization, return two arrays of zeros with the same length as the input time array.
 
-The output of the function is a tuple containing the time-domain waveforms `h_t1` and `h_t2`, which can be used to create the final gravitational wave signal.
+The output of the function is a tuple containing the time-domain waveforms `h_t1` and `h_t2`.
 
 
+## `generate_mode(mode, *args, **kwargs)`
 
+This is a template function for generating gravitational wave modes. It's overloaded to support both callables and sequences as input for the `mode`.
 
+### `generate_mode(mode, time, dt, rng_generator, pulse_duration=0.05, polarisation='unpolarised', polarisation_value=0.0, mode_kwargs={}, psd=gauss_psd, psd_kwargs={'sigma': 10})`
 
-This function generates a single mode of a gravitational wave signal. It takes a user-defined function or a predefined function from the modes sub-library, computes the mode, and returns it.
-
-### `generate_mode_v1(func, time, dt, rng_seed, mode_kwargs={}, polarisation=False, polarisation_value=None)`
-
-This version generates the gravitational wave mode using a single user-defined or predefined function. 
-
-- Arguments:
-  - `func`: function. The function to compute the mode.
-  - `time`: numpy.array. Array with the time coordinates at which to sample the mode.
-  - `dt`: float. Time step size.
-  - `rng_seed`: int. Seed used in random number generation.
-  - `mode_kwargs`: dict. A dict containing keyword arguments that are to be passed to the mode function.
-  - `polarisation`: bool. Whether or not to include polarisation effects.
-  - `polarisation_value`: float or numpy.array. Polarisation value(s) to use if `polarisation` is set to True.
-- Returns: numpy.array. The computed mode.
-
-### `generate_mode_v2(func, time, dt, rng_seed, mode_kwargs={}, polarisation=False, polarisation_value=None)`
-
-This version generates the gravitational wave mode using a single user-defined or predefined function and adds the effect of polarisation using the polarisation value(s).
+This version of `generate_mode` accepts a user-defined or predefined function for the mode. It generates the signal component associated with a given mode as a series of pulses of colored noise.
 
 - Arguments:
-  - `func`: function. The function to compute the mode.
+  - `mode`: function. Function describing the time evolution of the central frequency of the mode.
   - `time`: numpy.array. Array with the time coordinates at which to sample the mode.
   - `dt`: float. Time step size.
-  - `rng_seed`: int. Seed used in random number generation.
+  - `rng_generator`: numpy.random.Generator. Random number generator for creating noise samples.
+  - `pulse_duration`: float. Length of each of the individual pulses that make up the signal.
+  - `polarisation`: str. Pulse polarisation type: 'unpolarised', 'linear', or 'elliptical'.
+  - `polarisation_value`: float or numpy.array. Polarisation value(s) to use if `polarisation` is set.
   - `mode_kwargs`: dict. A dict containing keyword arguments that are to be passed to the mode function.
-  - `polarisation`: bool. Whether or not to include polarisation effects.
-  - `polarisation_value`: float or numpy.array. Polarisation value(s) to use if `polarisation` is set to True.
-- Returns: numpy.array. The computed mode.
+  - `psd`: function. PSD to use for the colored noise.
+  - `psd_kwargs`: dict. A dict containing keyword arguments that are to be passed to the PSD function.
+- Returns: tuple of numpy.array. The computed x and p components of the signal.
+
+### `generate_mode(mode, time, dt, rng_generator, pulse_duration=0.05, polarisation='unpolarised', polarisation_value=0.0, psd=gauss_psd, psd_kwargs={'sigma': 10}, mode_kwargs={})`
+
+This version of `generate_mode` accepts a sequence or ndarray for the mode. It generates the signal component associated with a given mode as a series of pulses of colored noise.
+
+- Arguments:
+  - `mode`: ndarray, list. Array describing the time evolution of the central frequency of the mode.
+  - `time`: numpy.array. Array with the time coordinates at which to sample the mode.
+  - `dt`: float. Time step size.
+  - `rng_generator`: numpy.random.Generator. Random number generator for creating noise samples.
+  - `pulse_duration`: float. Length of each of the individual pulses that make up the signal.
+  - `polarisation`: str. Pulse polarisation type: 'unpolarised', 'linear', or 'elliptical'.
+  - `polarisation_value`: float or numpy.array. Polarisation value(s) to use if `polarisation` is set.
+  - `psd`: function. PSD to use for the colored noise.
+  - `psd_kwargs`: dict. A dict containing keyword arguments that are to be passed to the PSD function.
+  - `mode_kwargs`: dict. A dict containing keyword arguments that are to be passed to the mode function (if required).
+- Returns: tuple of numpy.array. The computed x and p components of the signal.
+
+
 
 ## `add_noise`
 
@@ -77,6 +87,9 @@ Generates random noise and scales it by the provided noise level.
   - `noise_level`: float. The scaling factor for the generated noise. A higher value results in a higher level of noise. Default value is 1.0.
 - Returns: numpy.array. The generated noise array.
 
+## Power spectral density
+The following PSDs are defined for colouring the noise that makes up the pulses. 
+These are predefined, but the user can specify their own. Using the simple `guass_psd` is recommended for most use cases.
 
 ### `gauss_psd(f, central_frequency, **kwargs)`
 
@@ -117,5 +130,5 @@ This function returns a constant spectral density within a frequency band center
   - `central_frequency`: float. The central frequency.
   - `**kwargs`: dict. A dictionary containing additional keyword arguments, in this case `delta_f` for the width of the frequency band.
 - Returns: numpy.array. The constant spectral density within the defined frequency band and zero outside.
----
+
 
