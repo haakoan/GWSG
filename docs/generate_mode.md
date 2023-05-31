@@ -3,7 +3,7 @@ layout: page
 title:  generate_mode
 description: Documentation for the main signal generation aspect of the code
 ---
-
+# Signal Generation
 `generate_mode` is a function that generates a gravitational wave mode based on the user-specified parameters. 
 It first generates random white noise in the frequency 
 domain and calculates the power spectral density `s1` using the provided `psd` function and input parameters. 
@@ -27,10 +27,10 @@ The math behind the function can be described as follows:
 5. Generate a pulse based on the specified polarization:
    - If the polarization is 'unpolarised', generate another set of random white noise `h2_white`, shape it by the power spectral density `s1`, and perform an inverse Fourier transform on both `h1_shaped` and `h2_shaped` to obtain the time-domain waveforms `h_t1` and `h_t2`.
    - If the polarization is 'linear', generate a time-domain waveform `h_t1` using the inverse Fourier transform of `h1_shaped`, and set `h_t2` to be an array of zeros with the same length as `h_t1`.
-   - If the polarization is 'elliptical', generate another set of random white noise `h2_white`, shape it by the power spectral density `s1` and the polarization value `polarisation_value`, and perform an inverse Fourier transform on both `h1_shaped` and `h2_shaped` to obtain the time-domain waveforms `h_t1` and `h_t2`.
-   - For any other polarization, return two arrays of zeros with the same length as the input time array.
+   - If the polarization is 'elliptical', then `h2_white` is related to `h1_white` in the frequency domain as `h2_white = 1.0j*h1_white*polarisation_value`.
 
-The output of the function is a tuple containing the time-domain waveforms `h_t1` and `h_t2`.
+The output of the function is a tuple containing the time-domain waveforms `h_t1` and `h_t2`. The signals ends up in `Signal.signal[0]` and `Signal.signal[1]` from where the user
+can acess them.
 
 
 ## `generate_mode(mode, *args, **kwargs)`
