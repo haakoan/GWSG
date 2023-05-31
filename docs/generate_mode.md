@@ -77,5 +77,37 @@ Generates random noise and scales it by the provided noise level.
   - `noise_level`: float. The scaling factor for the generated noise. A higher value results in a higher level of noise. Default value is 1.0.
 - Returns: numpy.array. The generated noise array.
 
+
+### `gauss_psd(f, central_frequency, **kwargs)`
+
+This function returns the Gaussian spectral density centered around a `central_frequency` with standard deviation `sigma`.
+
+- Arguments:
+  - `f`: numpy.array. The frequency values.
+  - `central_frequency`: float. The central frequency.
+  - `**kwargs`: dict. A dictionary containing additional keyword arguments, in this case `sigma` for the standard deviation.
+- Returns: numpy.array. The Gaussian spectral density.
+
+### `logistic_psd(f, central_frequency, **kwargs)`
+
+This function returns the Logistic spectral density centered around a `central_frequency` with scale `s`.
+
+- Arguments:
+  - `f`: numpy.array. The frequency values.
+  - `central_frequency`: float. The central frequency.
+  - `**kwargs`: dict. A dictionary containing additional keyword arguments, in this case `s` for the scale parameter.
+- Returns: numpy.array. The Logistic spectral density.
+
+### `cauchy_psd(f, central_frequency, **kwargs)`
+
+This function returns the Cauchy spectral density centered around a `central_frequency` with scale `gamma`.
+
+- Arguments:
+  - `f`: numpy.array. The frequency values.
+  - `central_frequency`: float. The central frequency.
+  - `**kwargs`: dict. A dictionary containing additional keyword arguments, in this
+
+
+
 ---
 
