@@ -105,9 +105,17 @@ This function returns the Cauchy spectral density centered around a `central_fre
 - Arguments:
   - `f`: numpy.array. The frequency values.
   - `central_frequency`: float. The central frequency.
-  - `**kwargs`: dict. A dictionary containing additional keyword arguments, in this
+  - `**kwargs`: dict. A dictionary containing additional keyword arguments, in this case `gamma` for the scale parameter.
+- Returns: numpy.array. The Cauchy spectral density.
 
+### `constant_psd(f, central_frequency, **kwargs)`
 
+This function returns a constant spectral density within a frequency band centered around a `central_frequency` and with a width of `delta_f`.
 
+- Arguments:
+  - `f`: numpy.array. The frequency values.
+  - `central_frequency`: float. The central frequency.
+  - `**kwargs`: dict. A dictionary containing additional keyword arguments, in this case `delta_f` for the width of the frequency band.
+- Returns: numpy.array. The constant spectral density within the defined frequency band and zero outside.
 ---
 
