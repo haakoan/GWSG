@@ -68,7 +68,7 @@ Saves various attributes of the Signal object to a tab-delimited text file. This
   - `filename` (`str`): The name of the output file where the data will be saved.    
 - Returns: None
 
-**Notes**
+**Notes:**
 The output file will be tab-delimited, and its first row will contain the names of the columns. The first column will be the time array, followed by the signal components (`h1` and `h2`), individual modes, and noise data. Each mode and polarization type will have its own column(s).
 
 The header will also include a comment indicating the RNG seed used for generating the data, facilitating reproducibility.
@@ -82,7 +82,7 @@ Saves the time array and the two polarization components (`h1` and `h2`) of the 
   - `filename` (`str`): The name of the output file where the signal data will be saved.
 - Returns: None
  
-**Notes**
+**Notes:**
 The output file will be tab-delimited and the first row will serve as a header, specifying the names of the columns ('Time', 'h1', and 'h2'). 
 A comment line will also be included in the header indicating the RNG seed used for generating the data, aiding in reproducibility.
 
