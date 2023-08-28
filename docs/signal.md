@@ -19,6 +19,15 @@ The Signal class represents a gravitational wave signal generated from a set of 
 - `modes_signal`: numpy.array
   - The gravitational wave signal sampled at the times in the `time` array, for each individual mode.
 
+- `polarisation` : dict, optional
+  - A dictionary specifying the polarisation state for each mode. 
+    The keys should be the mode names, and the corresponding items should be a list containing two elements. 
+    the first element represents the polarisation state
+    indicating the type of polarisation, which can be one of ["unpolarised", "linear", "elliptical"].
+    The second element should be a number giving the polarisation value, hc = hp*polarisation_value if elliptical.
+    If a mode name is not included in this dictionary, it defaults to "unpolarised". 
+    Default value is an empty dictionary {}.
+
 - `modes`: dict
   - A dictionary listing the modes of the signal.
 
