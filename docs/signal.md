@@ -5,11 +5,9 @@ description: Here we document the main signal class
 ---
 
 # Signal Class
-
 The Signal class represents a gravitational wave signal generated from a set of modes. For each mode and at each time step, the signal is created by randomly sampling from a window centered on the mode frequency at that time. Randomly sampled noise is then added to the signal. The relative strength of each mode can be adjusted by user-specified mode weights.
 
 ## Attributes
-
 - `time`: numpy.array
   - An array containing the time coordinates. Assumed to be equidistant.
 
@@ -46,11 +44,9 @@ The Signal class represents a gravitational wave signal generated from a set of 
 - `dt`: float
   - Spacing between time steps.
 
-
 ## Methods
 
 ### `generate_signal()`
-
 This function generates the gravitational wave signal based on the input provided by the user when the Signal was initiated. The user does not need to
 provide any input since this has already been provided when initializing the Signal instance. For each mode in the signal, generate_mode() is called and a
 mode weight is applied. The total signal is then constructed by summing up all the realizations of the modes and adding noise.
@@ -64,16 +60,15 @@ After the user has initialized a signal instance, the signal is generated as fol
 ```python
 signal.generate_signal()
 ```
-### `save_all(filename)`
 
+### `save_all(filename)`
 Saves various attributes of the Signal object to a tab-delimited text file. This function saves the time array, the signal components (`h1` and `h2`), individual modes, and noise data to a file. Each column in the output file corresponds to one of these attributes, and a header row is provided for easier identification.
 
 - Arguments:
-  - `filename` (`str`): The name of the output file where the data will be saved.
-    
+  - `filename` (`str`): The name of the output file where the data will be saved.    
 - Returns: None
-#### Notes
 
+**Notes**
 The output file will be tab-delimited, and its first row will contain the names of the columns. The first column will be the time array, followed by the signal components (`h1` and `h2`), individual modes, and noise data. Each mode and polarization type will have its own column(s).
 
 The header will also include a comment indicating the RNG seed used for generating the data, facilitating reproducibility.
@@ -87,11 +82,9 @@ Saves the time array and the two polarization components (`h1` and `h2`) of the 
   - `filename` (`str`): The name of the output file where the signal data will be saved.
 - Returns: None
  
-
-#### Notes
+**Notes**
 The output file will be tab-delimited and the first row will serve as a header, specifying the names of the columns ('Time', 'h1', and 'h2'). 
 A comment line will also be included in the header indicating the RNG seed used for generating the data, aiding in reproducibility.
-
 
 
 ### `__init__(self, time, modes, mode_kwargs={}, mode_weight = {}, polarisation=False, signal_weight = None, rng_seed = -1, noise_level=1.0)`
