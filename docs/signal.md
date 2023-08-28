@@ -55,6 +55,33 @@ After the user has initialized a signal instance, the signal is generated as fol
 ```python
 signal.generate_signal()
 ```
+### `save_all(filename)`
+
+Saves various attributes of the Signal object to a tab-delimited text file. This function saves the time array, the signal components (`h1` and `h2`), individual modes, and noise data to a file. Each column in the output file corresponds to one of these attributes, and a header row is provided for easier identification.
+
+- Arguments:
+  - `filename` (`str`): The name of the output file where the data will be saved.
+    
+- Returns: None
+#### Notes
+
+The output file will be tab-delimited, and its first row will contain the names of the columns. The first column will be the time array, followed by the signal components (`h1` and `h2`), individual modes, and noise data. Each mode and polarization type will have its own column(s).
+
+The header will also include a comment indicating the RNG seed used for generating the data, facilitating reproducibility.
+
+### `save_signal(filename)`
+
+#### Description
+Saves the time array and the two polarization components (`h1` and `h2`) of the signal to a tab-delimited text file. The output file will consist of three columns: the time array, `h1`, and `h2`.
+
+- Arguments:
+  - `filename` (`str`): The name of the output file where the signal data will be saved.
+- Returns: None
+ 
+
+#### Notes
+The output file will be tab-delimited and the first row will serve as a header, specifying the names of the columns ('Time', 'h1', and 'h2'). 
+A comment line will also be included in the header indicating the RNG seed used for generating the data, aiding in reproducibility.
 
 
 
