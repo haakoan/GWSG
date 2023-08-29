@@ -75,6 +75,7 @@ analytics:
   google:
 
 # Build settings
+baseurl: /GWSG
 markdown: kramdown
 exclude:
   - Gemfile
