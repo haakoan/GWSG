@@ -39,7 +39,7 @@ s = NAME.Signal(time=t,modes=modes,
 #t, modes, and polarisation are user inputs
 
 s.generate_signal() #Generate the signal
-# The signal s will now contain the 
+#The signal s will now contain the 
 #time and the two modes, hp and hc, in
 #s.time,s.signal[0],s.signal[1]
 
@@ -48,6 +48,8 @@ s.generate_signal() #Generate the signal
 plt.plot(s.time,s.signal[0]) 
 ```
 
-A fuller description of how to use NAME can be found in the notebook Getting_started.ipynb.
+### Tutorial
+A description of how to use NAME can be found in the tutorial the notebook
+named Getting_started.ipynb.
 
 </div>
