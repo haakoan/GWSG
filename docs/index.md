@@ -29,6 +29,7 @@ A basic example can be found in the notebook example.ipyb
 ### Basic usage
 
 ```python
+import NAME
 s = NAME.Signal(time=t,modes=modes,polarisation=polarisation) #Set up signal
 #t, modes, and polarisation are user inputs
 
