@@ -30,14 +30,21 @@ A basic example can be found in the notebook example.ipyb
 
 ```python
 import NAME
-s = NAME.Signal(time=t,modes=modes,polarisation=polarisation) #Set up signal
+
+#Set up signal
+s = NAME.Signal(time=t,modes=modes,polarisation=polarisation) 
+
 #t, modes, and polarisation are user inputs
 
 s.generate_signal() #Generate the signal
-
-# The signal s will now contain the time and the two modes, hp and hc, in
+# The signal s will now contain the 
+#time and the two modes, hp and hc, in
 #s.time,s.signal[0],s.signal[1]
-plt.plot(s.time,s.signal[0]) #Plot one part of the signal (assuming pylab is imported as plt)
+
+#Plot one part of the signal 
+#(assuming pylab is imported as plt)
+plt.plot(s.time,s.signal[0]) 
+
 ```
 
 A fuller description of how to use NAME can be found in the notebook Getting_started.ipynb.
