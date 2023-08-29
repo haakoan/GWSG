@@ -17,9 +17,8 @@ A basic example can be found in the notebook example.ipyb
    ```bash
   git clone https://github.com/haakoan/NAME
   ```
-  
-  ```python
 
+  ```python
   import NAME
   ```
 
