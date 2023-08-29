@@ -49,13 +49,11 @@ plt.plot(s.time,s.signal[0])
 ## Tutorial
 A description of how to use NAME can be found in the tutorial the notebook
 named Getting_started.ipynb.
-
 </div>
-
 <div class="col-lg-6" markdown="1">
 
 ## Documentation
-
+{:.mt-lg-0}
 ### Signal Class
 This section documents the main Signal class, which is the primary object that end-users will interact with.
 [Main Signal Class]({{ site.baseurl }}{% link signal.md %})
