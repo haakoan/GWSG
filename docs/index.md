@@ -17,7 +17,9 @@ A basic example can be found in the notebook example.ipyb
    ```bash
   git clone https://github.com/haakoan/NAME
   ```
-    ```python
+  
+  ```python
+
   import NAME
   ```
 
@@ -44,7 +46,6 @@ s.generate_signal() #Generate the signal
 #Plot one part of the signal 
 #(assuming pylab is imported as plt)
 plt.plot(s.time,s.signal[0]) 
-
 ```
 
 A fuller description of how to use NAME can be found in the notebook Getting_started.ipynb.
