@@ -33,7 +33,8 @@ A basic example can be found in the notebook example.ipyb
 import NAME
 
 #Set up signal
-s = NAME.Signal(time=t,modes=modes,polarisation=polarisation) 
+s = NAME.Signal(time=t,modes=modes,
+                polarisation=polarisation) 
 
 #t, modes, and polarisation are user inputs
 
