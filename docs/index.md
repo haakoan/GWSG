@@ -53,3 +53,21 @@ A description of how to use NAME can be found in the tutorial the notebook
 named Getting_started.ipynb.
 
 </div>
+
+<div class="row">
+<div class="col-lg-6" markdown="1">
+
+# Documentation
+
+### Signal Class
+This section documents the main Signal class, which is the primary object that end-users will interact with.
+[Main Signal Class]({% link signal.md %})
+
+### Mode Generation
+[Mode Generation]({% link generate_mode.md %}) provides details on the underlying machinery that generates individual modes, and essentially forms the signal.
+
+### Built-in Modes
+Find details about the supernova-specific modes used to generate the signal in [Built-in Modes]({% link modes.md %}).
+
+</div>
+</div>
