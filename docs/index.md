@@ -54,7 +54,6 @@ named Getting_started.ipynb.
 
 </div>
 
-<div class="row">
 <div class="col-lg-6" markdown="1">
 
 ## Documentation
