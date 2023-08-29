@@ -14,22 +14,31 @@ A basic example can be found in the notebook example.ipyb
 {:.mt-lg-0}
 
 ### git
-  Simply clone the repository and run import the module
-  
-### pip
-  ```bash
-  pip install gwsignalgenerator
+   ```bash
+  git clone https://github.com/haakoan/NAME
+  ```
+    ```python
+  import NAME
   ```
 
-### GitHub Pages
+### pip
+  ```bash
+  #To come 
+  ```
 
-And add this line to your Jekyll site's `_config.yml`:
+### Basic usage
 
-```yaml
-remote_theme: allejo/jekyll-docs-theme@v{{ site.project.version }}
+```python
+s = NAME.Signal(time=t,modes=modes,polarisation=polarisation) #Set up signal
+#t, modes, and polarisation are user inputs
+
+s.generate_signal() #Generate the signal
+
+# The signal s will now contain the time and the two modes, hp and hc, in
+#s.time,s.signal[0],s.signal[1]
+plt.plot(s.time,s.signal[0]) #Plot one part of the signal (assuming pylab is imported as plt)
 ```
-</div>
-<div class="col-lg-6" markdown="1">
 
-</div>
+A fuller description of how to use NAME can be found in the notebook Getting_started.ipynb.
+
 </div>
