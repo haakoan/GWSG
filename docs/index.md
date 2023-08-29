@@ -58,13 +58,13 @@ named Getting_started.ipynb.
 
 ### Signal Class
 This section documents the main Signal class, which is the primary object that end-users will interact with.
-[Main Signal Class]({% link _signal.md %})
+[Main Signal Class]({% link signal.md %})
 
 ### Mode Generation
-[Mode Generation]({% link _generate_mode.md %}) provides details on the underlying machinery that generates individual modes, and essentially forms the signal.
+[Mode Generation]({% link generate_mode.md %}) provides details on the underlying machinery that generates individual modes, and essentially forms the signal.
 
 ### Built-in Modes
-Find details about the supernova-specific modes used to generate the signal in [Built-in Modes]({% link _modes.md %}).
+Find details about the supernova-specific modes used to generate the signal in [Built-in Modes]({% link modes.md %}).
 
 </div>
 </div>
