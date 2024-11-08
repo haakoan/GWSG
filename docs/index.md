@@ -2,7 +2,7 @@
 layout: full
 homepage: true
 disable_anchors: true
-description: Documentation for the GW-signal generator
+description: Documentation for SynthGrav, a GW signal generator
 ---
 
 <div class="row">
@@ -13,11 +13,11 @@ description: Documentation for the GW-signal generator
 
 ### git
    ```bash
-  git clone https://github.com/haakoan/NAME
+  git clone https://github.com/haakoan/synthgrav
   ```
 
   ```python
-  import NAME
+  import synthgrav
   ```
 
 ### pip
@@ -28,41 +28,41 @@ description: Documentation for the GW-signal generator
 ## Basic usage
 
 ```python
-import NAME
+import synthgrav
 
 #Set up signal
-s = NAME.Signal(time=t,modes=modes,
+s = synthgrav.Signal(time=t,modes=modes,
                 polarisation=polarisation) 
 
 #t, modes, and polarisation are user inputs
 
 s.generate_signal() #Generate the signal
-#The signal s will now contain the 
+#In this example, the signal s will contain the 
 #time and the two modes, hp and hc, in
 #s.time,s.signal[0],s.signal[1]
 
-#Plot one part of the signal 
+#Plot one signal component 
 #(assuming pylab is imported as plt)
 plt.plot(s.time,s.signal[0]) 
 ```
 
 ## Tutorial
-A description of how to use NAME can be found in the tutorial the notebook
-named Getting_started.ipynb.
+The notebook Getting_started.ipynb provides a SynthGrav tutorial.
 </div>
 <div class="col-lg-6" markdown="1">
 
 ## Documentation
 {:.mt-lg-0}
 ### Signal Class
-This section documents the main Signal class, which is the primary object that end-users will interact with.
+This section documents the Signal class, through which users can generate a gravitational wave signal from a set of modes.
 [Main Signal Class]({{ site.baseurl }}{% link signal.md %})
 
 ### Mode Generation
-[Mode Generation]({{ site.baseurl }}{% link generate_mode.md %}) provides details on the underlying machinery that generates individual modes, and essentially forms the signal.
+[Mode Generation]({{ site.baseurl }}{% link generate_mode.md %}) provides details on the underlying machinery that generates individual modes to form the signal.
 
 ### Built-in Modes
-Find details about the supernova-specific modes used to generate the signal in [Built-in Modes]({{ site.baseurl }}{% link modes.md %}).
+SynthGrav includes built-in modes for supernovae. 
+Find details in [Built-in Modes]({{ site.baseurl }}{% link modes.md %}).
 
 </div>
 </div>
