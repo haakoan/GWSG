@@ -22,7 +22,7 @@ links:
     - title: View on GitHub
       icon: github
       brand: true
-      url: https://github.com/haakoan/GWSG
+      url:  https://github.com/haakoan/SynthGrav
   footer:
     - title: GitHub
       icon: github
@@ -30,7 +30,7 @@ links:
       url: https://github.com/haakoan/GWSG
     - title: Issues
       icon: bug
-      url: https://github.com/haakoan/GWSG/issues?state=open
+      url:  https://github.com/haakoan/SynthGrav/issues?state=open
 
 ui:
   mode: 'auto' # 'auto', 'dark', 'light'

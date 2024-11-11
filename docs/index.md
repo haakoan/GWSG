@@ -2,7 +2,7 @@
 layout: full
 homepage: true
 disable_anchors: true
-description: Documentation for the GW-signal generator
+description: Documentation for the GW-signal generator SynthGrav
 ---
 
 <div class="row">
@@ -13,11 +13,11 @@ description: Documentation for the GW-signal generator
 
 ### git
    ```bash
-  git clone https://github.com/haakoan/NAME
+  git clone https://github.com/haakoan/SynthGrav
   ```
 
   ```python
-  import NAME
+  import synthgrav
   ```
 
 ### pip
@@ -28,10 +28,10 @@ description: Documentation for the GW-signal generator
 ## Basic usage
 
 ```python
-import NAME
+import synthgrav
 
 #Set up signal
-s = NAME.Signal(time=t,modes=modes,
+s = synthgrav.Signal(time=t,modes=modes,
                 polarisation=polarisation) 
 
 #t, modes, and polarisation are user inputs
@@ -47,8 +47,8 @@ plt.plot(s.time,s.signal[0])
 ```
 
 ## Tutorial
-A description of how to use NAME can be found in the tutorial the notebook
-named Getting_started.ipynb.
+A description of how to use SynthGrav can be found in the tutorial the notebook
+named Getting_started.ipynb, in the main repository <url>https://github.com/haakoan/SynthGrav</url>.
 </div>
 <div class="col-lg-6" markdown="1">
 
