@@ -2,7 +2,8 @@
 layout: full
 homepage: true
 disable_anchors: true
-description: Documentation for SynthGrav, a GW signal generator
+description: Documentation for the GW-signal generator SynthGrav
+
 ---
 
 <div class="row">
@@ -13,7 +14,7 @@ description: Documentation for SynthGrav, a GW signal generator
 
 ### git
    ```bash
-  git clone https://github.com/haakoan/synthgrav
+  git clone https://github.com/haakoan/SynthGrav
   ```
 
   ```python
