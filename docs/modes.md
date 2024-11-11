@@ -1,7 +1,7 @@
 ---
 layout: page
 title:  Predefined modes
-description: Here we document the signal modes
+description: Built-in oscillation modes for supernovae
 ---
 # Modes Sub-Library
 
@@ -21,18 +21,15 @@ The predefined modes available in the `modes` sub-library are:
 - `g3mode`
 - `gmode_default_func`
 
-gmode_default_func is a test function and the other modes are based on 
-Universal relations for gravitational-wave asteroseismology of proto-neutron stars, Alejandro Torres-Forné .et. al.
-https://arxiv.org/abs/1902.10048
+These modes are those obtained in <a target="_blank" href="https://arxiv.org/abs/1902.10048"> Universal relations for gravitational-wave asteroseismology of proto-neutron stars </a> by Alejandro Torres-Forné et al. (arXiv:1902.10048). gmode_default_func is a test function.
 
 Each predefined mode is implemented as a function that generates a gravitational wave signal based on the given time array and mode-specific parameters.
 The parameters of the modes are passed through the `Signal.mode_kwargs` dict. The dict is the same for every mode, but each mode is free to use the parts it needs
-and nothing more. This is a practical way of coding the modes, but it might be sub-optimal if `Signal.mode_kwargs` grows large. In such cases, it is recommended to run
-the signal generation using precomputed input arrays for the central frequency. For the code to work properly, `Signal.mode_kwargs` must contain elements that are 
+and nothing more. This is a practical way of coding the modes, but it might be sub-optimal if `Signal.mode_kwargs` grows large. In such cases, we recommended running
+the signal generation using precomputed input arrays for the central frequency. Note that `Signal.mode_kwargs` must contain elements that are 
 numpy arrays and have the same length as the `Signal.time`.
 
-Any number can be given to these modes, but for them to function as intended, the input must be reasonable and in accordance with the method described in 
-Universal relations for gravitational-wave asteroseismology of proto-neutron stars.
+Any number can be given to these modes, but for them to function as intended, the input must be reasonable and in accordance with the method described in Torres-Forné et al.
 
 ### p1mode
 
@@ -40,8 +37,8 @@ Universal relations for gravitational-wave asteroseismology of proto-neutron sta
 The function takes the mass (in solar masses) and radius (in km) as input parameters and returns a frequency array.
 
 Parameters:
-- msh: numpy.array - An array containing the mass values (in solar masses).
-- rsh: numpy.array - An array containing the radius values (in km).
+- msh: numpy.array - An array containing the mass values (in solar masses)
+- rsh: numpy.array - An array containing the radius values (in km)
 
 ### p2mode
 
@@ -49,8 +46,8 @@ Parameters:
 The function takes the mass (in solar masses) and radius (in km) as input parameters and returns a frequency array.
 
 Parameters:
-- msh: numpy.array - An array containing the mass values (in solar masses).
-- rsh: numpy.array - An array containing the radius values (in km).
+- msh: numpy.array - An array containing the mass values (in solar masses)
+- rsh: numpy.array - An array containing the radius values (in km)
 
 ### p3mode
 
@@ -58,8 +55,8 @@ Parameters:
 The function takes the mass (in solar masses) and radius (in km) as input parameters and returns a frequency array.
 
 Parameters:
-- msh: numpy.array - An array containing the mass values (in solar masses).
-- rsh: numpy.array - An array containing the radius values (in km).
+- msh: numpy.array - An array containing the mass values (in solar masses)
+- rsh: numpy.array - An array containing the radius values (in km)
 
 ### g1mode
 
@@ -67,8 +64,8 @@ Parameters:
 The function takes the mass (in solar masses) and radius (in km) as input parameters and returns a frequency array.
 
 Parameters:
-- mpns: numpy.array - An array containing the mass values (in solar masses).
-- rpns: numpy.array - An array containing the radius values (in km).
+- mpns: numpy.array - An array containing the mass values (in solar masses)
+- rpns: numpy.array - An array containing the radius values (in km)
 
 ### g2mode
 
@@ -76,8 +73,8 @@ Parameters:
 The function takes the mass (in solar masses) and radius (in km) as input parameters and returns a frequency array.
 
 Parameters:
-- mpns: numpy.array - An array containing the mass values (in solar masses).
-- rpns: numpy.array - An array containing the radius values (in km).
+- mpns: numpy.array - An array containing the mass values (in solar masses)
+- rpns: numpy.array - An array containing the radius values (in km)
 
 ### g3mode
 
@@ -85,10 +82,10 @@ Parameters:
 The function takes the mass (in solar masses), radius (in km), central pressure, and central density as input parameters and returns a frequency array.
 
 Parameters:
-- msh: numpy.array - An array containing the mass values (in solar masses).
-- rsh: numpy.array - An array containing the radius values (in km).
-- pC: numpy.array - An array containing the central pressure values.
-- rhoC: numpy.array - An array containing the central density values.
+- msh: numpy.array - An array containing the mass values (in solar masses)
+- rsh: numpy.array - An array containing the radius values (in km)
+- pC: numpy.array - An array containing the central pressure values
+- rhoC: numpy.array - An array containing the central density values
 
 ### gmode_default_func
 
@@ -96,13 +93,14 @@ Parameters:
 It serves as a default function for testing purposes. The function takes time as an input parameter and returns a frequency array.
 
 Parameters:
-- time: numpy.array - An array containing the time values.
+- time: numpy.array - An array containing the time values
 
 
 ## User-Defined Modes
 
-To use a custom mode function with the Signal class, you can pass it as a dictionary value to the modes parameter when initializing the Signal instance:
-Users can create their own custom mode functions to generate gravitational wave signals. A user-defined mode function must have the following signature:
+Users can create custom mode functions to generate gravitational wave signals.
+To use a custom mode function with the Signal class, pass it as a dictionary value to the modes parameter when initializing the Signal instance.
+A user-defined mode function must have the following signature:
 
 ```python
 def custom_mode_function(mode_kwargs):
