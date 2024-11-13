@@ -1,6 +1,6 @@
 ---
 layout: page
-title:  Signal Class
+title:  Signal class
 description: Here we document the main signal class
 ---
 
