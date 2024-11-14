@@ -21,15 +21,15 @@ The predefined modes available in the `modes` sub-library are:
 - `g3mode`
 - `gmode_default_func`
 
-These modes are those obtained in <a target="_blank" href="https://arxiv.org/abs/1902.10048"> Universal relations for gravitational-wave asteroseismology of proto-neutron stars </a> by Alejandro Torres-Forné et al. (arXiv:1902.10048). gmode_default_func is a test function.
+These modes are those obtained in <a target="_blank" href="https://arxiv.org/abs/1902.10048"> Universal relations for gravitational-wave asteroseismology of proto-neutron stars </a> by Alejandro Torres-Forné et al. (arXiv:1902.10048). The function gmode_default_func is a toy function for testing purposes.
 
 Each predefined mode is implemented as a function that generates a gravitational wave signal based on the given time array and mode-specific parameters.
 The parameters of the modes are passed through the `Signal.mode_kwargs` dict. The dict is the same for every mode, but each mode is free to use the parts it needs
 and nothing more. This is a practical way of coding the modes, but it might be sub-optimal if `Signal.mode_kwargs` grows large. In such cases, we recommended running
 the signal generation using precomputed input arrays for the central frequency. Note that `Signal.mode_kwargs` must contain elements that are 
-numpy arrays and have the same length as the `Signal.time`.
+numpy arrays and have the same length as `Signal.time`.
 
-Any number can be given to these modes, but for them to function as intended, the input must be reasonable and in accordance with the method described in Torres-Forné et al.
+Any array can be given to these modes, but for them to function as intended, the input must be reasonable and in accordance with the method described in Torres-Forné et al.
 
 ### p1mode
 
