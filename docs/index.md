@@ -65,5 +65,9 @@ This section documents the Signal class, through which users can generate a grav
 SynthGrav includes built-in modes for supernovae. 
 Find details in [Built-in Modes]({{ site.baseurl }}{% link modes.md %}).
 
+## Contact
+Haakon Andresen: haakon.andresen (at) astro.su.se
+Bella Finkel: blfinkel (at) wisc.edu
+
 </div>
 </div>
