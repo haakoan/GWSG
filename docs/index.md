@@ -66,7 +66,7 @@ SynthGrav includes built-in modes for supernovae.
 Find details in [Built-in Modes]({{ site.baseurl }}{% link modes.md %}).
 
 ## Contact
-Haakon Andresen: haakon.andresen (at) astro.su.se
+Haakon Andresen: haakon.andresen (at) astro.su.se \
 Bella Finkel: blfinkel (at) wisc.edu
 
 </div>
